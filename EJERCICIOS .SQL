@@ -119,10 +119,28 @@ SELECT DISTINCT compania FROM Usuarios ORDER BY compania ASC;
 SELECT SUM(saldo) FROM Usuarios WHERE compania = 'UNEFON';
 
 -- Mostrar el email de los usuarios que usan hotmail
+SELECT email FROM Usuarios WHERE email LIKE "%hotmail.com";
+
 -- Listar los nombres de los usuarios sin saldo o inactivos
+SELECT nombre FROM Usuarios WHERE NOT activo OR saldo <= 0;
+
 -- Listar el login y teléfono de los usuarios con compañía telefónica IUSACELL o TELCEL
+SELECT usuario, telefono FROM Usuarios WHERE compania IN('IUSACELL', 'TELCEL');
+
 -- Listar las diferentes marcas de celular en orden alfabético ascendentemente
+SELECT DISTINCT marca FROM Usuarios ORDER BY marca DESC;
+
 -- Listar las diferentes marcas de celular en orden alfabético aleatorio
+SELECT DISTINCT marca FROM Usuarios ORDER BY RAND();
+
 -- Listar el login y teléfono de los usuarios con compañía telefónica IUSACELL o UNEFON
+SELECT usuario, telefono FROM Usuarios WHERE compania IN('IUSACELL', 'UNEFON');
+
 -- Listar nombre y teléfono de los usuarios con teléfono que no sea de la marca MOTOROLA o NOKIA
+SELECT nombre, telefono FROM Usuarios WHERE marca NOT IN('MOTOROLA', 'NOKIA');
+
 -- Calcular la suma de los saldos de los usuarios de la compañía telefónica TELCELListar el login de los usuarios con nivel 1, 2 o 3
+SELECT SUM(saldo) FROM Usuarios WHERE compania = 'TELCEL';
+
+
+
